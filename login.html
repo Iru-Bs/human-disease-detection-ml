@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login | Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+    background: url("static/images/main1.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    margin: 30;
+    padding: 0;
+}
+
+  
+/* Sidebar styling */
+    .sidebar {
+      width: 250px;
+      background: #2c3e50;
+      color: white;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 40px;
+      position: fixed;
+      height: 100%;
+          top: 0;          /* ✅ ensures it starts at the top */
+    left: 0;         /* ✅ fixes to left side */
+    height: 100vh;   /* ✅ full height of the screen */
+    margin: 0;       /* ✅ removes any gap */
+    border: none;    /* optional — for clean edge */
+    }
+
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      width: 100%;
+      text-align: center;
+      display: block;
+      border-radius: 6px;
+      margin: 5px 0;
+    }
+
+    .sidebar a:hover {
+      background: #1abc9c;
+      color: white;
+    }
+    
+</style>
+</head>
+<body>
+    
+     <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>🧠 Disease Detector</h2>
+    <a href="{{ url_for('home') }}">🏠 Home</a>
+   
+    <a href="{{ url_for('login') }}">🔑 Login</a>
+    
+
+    <a href="{{ url_for('about') }}">ℹ️ About</a>
+
+  </div>
+<div class="container">
+    <h2>🔐 Login</h2>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    <form method="POST">
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <button type="submit" class="btn">Login</button>
+    </form>
+</div>
+</body>
+</html>

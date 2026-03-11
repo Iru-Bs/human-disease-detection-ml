@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard | Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Welcome, {{ session['user'] }}</h2>
+    <h3>Upload an Image to Detect Disease</h3>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('predict') }}" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required><br>
+        <button type="submit" class="btn">Predict Disease</button>
+    </form>
+
+    <a href="{{ url_for('logout') }}" class="btn secondary">Logout</a>
+</div>
+</body>
+</html>
